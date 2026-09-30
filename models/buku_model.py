@@ -26,3 +26,10 @@ class BukuModel:
             cursor.close()
             return True
         return False
+
+class BukuModel:
+    # Model untuk mengelola data buku
+    def __init__(self):
+        self.db = Database()
+        self.conn = self.db.get_connection()
+        self.table_name = "buku"

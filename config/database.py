@@ -22,3 +22,12 @@ class Database:
         except Error as e:
             print(f"Koneksi Gagal: {e}")
             return None
+
+class Database:
+    # Mengatur koneksi aplikasi ke database MySQL
+    def __init__(self):
+        self.host = "localhost"
+        self.db_name = "perpustakaan"
+        self.username = "root"
+        self.password = ""
+        self.conn = None
