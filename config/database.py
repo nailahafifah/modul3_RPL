@@ -1,7 +1,11 @@
+# Nailah Afifah F5212520034
+
 import mysql.connector
 from mysql.connector import Error
 
+
 class Database:
+    # Mengatur koneksi aplikasi ke database MySQL
     def __init__(self):
         self.host = "localhost"
         self.db_name = "perpustakaan"
@@ -17,17 +21,11 @@ class Database:
                 user=self.username,
                 password=self.password
             )
+
             if self.conn.is_connected():
                 return self.conn
+
         except Error as e:
             print(f"Koneksi Gagal: {e}")
-            return None
 
-class Database:
-    # Mengatur koneksi aplikasi ke database MySQL
-    def __init__(self):
-        self.host = "localhost"
-        self.db_name = "perpustakaan"
-        self.username = "root"
-        self.password = ""
-        self.conn = None
+        return None

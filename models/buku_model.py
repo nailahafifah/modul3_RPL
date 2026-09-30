@@ -1,6 +1,9 @@
+#Nailah Afifah F5212520034
 from config.database import Database
 
+
 class BukuModel:
+    # Model untuk mengelola data buku
     def __init__(self):
         self.db = Database()
         self.conn = self.db.get_connection()
@@ -14,22 +17,26 @@ class BukuModel:
             result = cursor.fetchall()
             cursor.close()
             return result
+
         return []
 
     def create_buku(self, judul, penulis, tahun_terbit):
         if self.conn:
             cursor = self.conn.cursor()
-            query = f"INSERT INTO {self.table_name} (judul, penulis, tahun_terbit) VALUES (%s, %s, %s)"
-            val = (judul, penulis, tahun_terbit)
-            cursor.execute(query, val)
+
+            query = f"""
+                INSERT INTO {self.table_name}
+                (judul, penulis, tahun_terbit)
+                VALUES (%s, %s, %s)
+            """
+
+            values = (judul, penulis, tahun_terbit)
+
+            cursor.execute(query, values)
             self.conn.commit()
             cursor.close()
+
             return True
+
         return False
 
-class BukuModel:
-    # Model untuk mengelola data buku
-    def __init__(self):
-        self.db = Database()
-        self.conn = self.db.get_connection()
-        self.table_name = "buku"
